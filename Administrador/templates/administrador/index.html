@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+        {% block title %}
+        BIBLIOTECA SaBré - Acceso Total
+        {% endblock %}
+    </title>
+    <!-- Fuentes e Iconos de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <!-- Estilos locales de Django Staticfiles -->
+    <link rel="stylesheet" href="{% static 'Administrador/style.css' %}">
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+
+    <!-- Header -->
+    <header class="header-main">
+        <nav aria-label="Main Navigation" class="nav-container">
+            <a class="logo-title" href=" {% url 'index' %}">BIBLIOTECA SaBré</a>
+            <div class="nav-links">
+                <!-- Usamos los "apodos" de urls.py para conectar los botones -->
+                <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+                <a class="nav-link" href="{% url 'usuarios' %}">Usuarios</a>
+                <a class="nav-link" href="{% url 'ventas' %}">Ventas</a>
+                <a class="nav-link" href="#">Talleres</a>
+                <a class="nav-link" href="#">Informática</a>
+            </div>
+            <div class="header-actions">
+                <button aria-label="Buscar" class="btn-search-icon" type="button">
+                    <span aria-hidden="true" class="material-symbols-outlined icon-fill">search</span>
+                </button>
+                <button class="btn-accessibility" type="button">
+                    Accesibilidad
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block codigoDinamico %}
+        <!-- Hero Section -->
+        <div class="ayudante-wrapper">
+            <button class="btn-ayudante" type="button">AYUDANTE de Biblioteca</button>
+        </div>
+
+        <section class="hero-section">
+            <div class="hero-text-container">
+                <h1 class="hero-title">
+                    ACCESO TOTAL A LA CULTURA
+                </h1>
+                <p class="hero-description">
+                    Una biblioteca diseñada sin barreras. Descubre nuestro vasto catálogo de recursos accesibles, desde audiolibros hasta textos en braille, en un entorno pensado para todos.
+                </p>
+                <button class="btn-hero" type="button">
+                    Explorar Catálogo
+                </button>
+            </div>
+            <div class="hero-image-container">
+                <img alt="Ilustración abstracta de lectura accesible" class="hero-image" data-alt="A high contrast, minimalist brutalist illustration representing an open book transforming into a sound wave, rendered in pure bright yellow against a deep black background. The style is geometric and bold, designed for extreme visual clarity and accessibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3iHyjUQA0SDdR4mn1C1mrFXV2A23mLMg5mrK7A5sQeIu6by-gpaTbNsgIwAHAuW48Nyn0n90jiyLjwd6Uv-LuFd-BRP0d-sN9lFzKsdKs90rG7pZavfoC4Ej1YwKiyrSiDT11KGTnlOrDeYTZv_RFb_HfkJ4VsErVDsCSm_jLbbQ1Xz43IuJNBHoqxkS-Pt_e-ttwa4RQasKYfPa-watvlvq-4dX96XFfgTdHCKF4XcHUJuk_7QfQ">
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="services-section">
+            <h2 class="section-title">
+                Nuestros Servicios
+            </h2>
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <a class="service-card group" href="#">
+                    <div class="service-icon-box">
+                        <span aria-hidden="true" class="material-symbols-outlined icon-fill">menu_book</span>
+                    </div>
+                    <h3 class="service-card-title">Préstamos</h3>
+                    <p class="service-card-text">Libros en macrocaracteres y formatos adaptados para baja visión.</p>
+                </a>
+                <!-- Card 2 -->
+                <a class="service-card group" href="#">
+                    <div class="service-icon-box">
+                        <span aria-hidden="true" class="material-symbols-outlined icon-fill">headphones</span>
+                    </div>
+                    <h3 class="service-card-title">Audio</h3>
+                    <p class="service-card-text">Extensa colección de audiolibros con reproductores accesibles.</p>
+                </a>
+                <!-- Card 3 -->
+                <a class="service-card group" href="#">
+                    <div class="service-icon-box">
+                        <span aria-hidden="true" class="material-symbols-outlined icon-fill">touch_app</span>
+                    </div>
+                    <h3 class="service-card-title">Braile</h3>
+                    <p class="service-card-text">Literatura, revistas y documentos impresos en sistema braille.</p>
+                </a>
+                <!-- Card 4 -->
+                <a class="service-card group" href="#">
+                    <div class="service-icon-box">
+                        <span aria-hidden="true" class="material-symbols-outlined icon-fill">groups</span>
+                    </div>
+                    <h3 class="service-card-title">Talleres</h3>
+                    <p class="service-card-text">Actividades formativas y culturales diseñadas inclusivamente.</p>
+                </a>
+                <!-- Card 5 -->
+                <a class="service-card group" href="#">
+                    <div class="service-icon-box">
+                        <span aria-hidden="true" class="material-symbols-outlined icon-fill">computer</span>
+                    </div>
+                    <h3 class="service-card-title">Informática</h3>
+                    <p class="service-card-text">Puestos con lectores de pantalla y magnificadores instalados.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Products Section & Table -->
+        <section aria-labelledby="productos-heading" class="products-section">
+            <div class="products-header">
+                <h2 class="section-title uppercase tracking-wider" id="productos-heading">
+                    Nuestros Productos
+                </h2>
+                <div class="products-actions">
+                    <button class="btn-nuevo-producto" type="button">+ Nuevo Producto</button>
+                    <button class="btn-buscar-productos" type="button">
+                        <span aria-hidden="true" class="material-symbols-outlined">search</span>
+                        Buscar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="table-container">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th class="th-id" scope="col">ID</th>
+                            <th scope="col">Nombre Producto</th>
+                            <th scope="col">Categoría / Marca</th>
+                            <th class="th-acciones" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in producto %}
+                        <tr>
+                            <td class="td-id">{{ item.id }}</td>
+                            <td class="td-nombre">{{ item.nombre }}</td> 
+                            <td>{{ item.categoria }}</td> 
+                            <td class="td-acciones">
+                                <div class="action-buttons-group">
+                                    <button class="btn-editar" type="button">
+                                        Editar
+                                    </button>
+                                    <button class="btn-eliminar" type="button">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 20px;">
+                                No hay productos cargados en la base de datos.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>

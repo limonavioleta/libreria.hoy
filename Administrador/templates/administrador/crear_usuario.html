@@ -1,0 +1,25 @@
+{% extends 'administrador/base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+    <!-- Si en tu proyecto usás {% extends 'base.html' %}, podés borrar este head y body -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Crear Nuevo Usuario</h2>
+        
+        <!-- Formulario por método POST -->
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Renderiza los campos del formulario (UsuarioForm) automáticamente -->
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+            <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

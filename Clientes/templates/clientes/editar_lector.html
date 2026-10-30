@@ -1,0 +1,18 @@
+<!-- templates/clientes/editar_lector.html -->
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 600px;">
+    <h2 style="color: var(--color-amarillo);">Editar Lector: {{ lector.nombre_completo }}</h2>
+
+    <form method="POST" class="card card-body shadow-sm mt-3" style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde-tarjeta);">
+        {% csrf_token %} <!--[cite: 23] -->
+        {{ form.as_p }}
+
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'listar_lectores' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary" style="background-color: var(--color-amarillo); color: black; border: none;">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

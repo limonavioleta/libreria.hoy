@@ -1,0 +1,38 @@
+{% extends 'administrador/base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Producto</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Buscar Producto</h2>
+        
+        <!-- Formulario de búsqueda (método GET) -->
+        <form method="GET" action="{% url 'buscar_producto' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Ej: Teclado" class="form-control mb-2">
+            <button type="submit" class="btn btn-success">Buscar</button>
+        </form>
+
+        <hr>
+
+        <!-- Lógica para mostrar los resultados de búsqueda -->
+        {% if query %}
+            <h3>Resultados para "{{ query }}":</h3>
+            {% if resultados %}
+                <ul>
+                    {% for producto in resultados %}
+                        <li>{{ producto.nombre_producto }} - {{ producto.marca_producto }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No se encontraron productos con ese nombre.</p>
+            {% endif %}
+        {% endif %}
+        
+        <br>
+        <a href="{% url 'listar_productos' %}" class="btn btn-secondary">Volver a Productos</a>
+    </div>
+</body>
+</html>

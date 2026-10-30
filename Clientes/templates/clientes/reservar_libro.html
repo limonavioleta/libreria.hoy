@@ -1,0 +1,26 @@
+<!-- templates/clientes/reservar_libro.html -->
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<main class="contenedor-form" style="max-width: 600px; margin: 40px auto;">
+    <h1 style="color: var(--color-amarillo);">Reserva de Libro y Cupón Solidario</h1>
+    <h2 style="font-size: 1.2rem; margin-bottom: 20px;">Estás por reservar el libro: {{ libro.titulo }}</h2>
+
+    <div style="background-color: #2a2a2a; padding: 15px; border-left: 4px solid var(--color-amarillo); margin-bottom: 20px;" role="region" aria-label="Información sobre la donación para Merlo">
+        <p style="margin-bottom: 10px;"><strong>Campaña Solidaria:</strong> Tu reserva incluye un cupón especial. Al retirar tu libro, te pedimos intercambiar este cupón por un alimento no perecedero.</p>
+        <p style="font-size: 0.9rem; color: var(--texto-gris);">Todo lo recaudado será donado a los comedores de niños y niñas de Merlo.</p>
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %} <!-- Obligatorio para enviar la reserva[cite: 23] -->
+        {{ form.as_p }}
+        
+        <div style="margin-top: 15px;">
+            <label for="id_codigo_cupon" style="display:block; margin-bottom:5px;">Si tienes un código de cupón previo (opcional):</label>
+            <input type="text" name="codigo_cupon" id="id_codigo_cupon" style="width: 100%; padding: 8px; background: #333; color: white; border: 1px solid #555;">
+        </div>
+
+        <button type="submit" class="btn-accesibilidad" style="width: 100%; margin-top: 25px;" aria-label="Confirmar la reserva de este libro y generar cupón solidario">Confirmar Reserva y Generar Cupón</button>
+    </form>
+</main>
+{% endblock %}

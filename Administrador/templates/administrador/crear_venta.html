@@ -1,0 +1,18 @@
+{% extends 'administrador/base.html' %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Registrar Nueva Venta</h2>
+    
+    <form method="POST" class="card card-body shadow-sm mt-3">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'listar_ventas' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Guardar Venta</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

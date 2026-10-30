@@ -1,0 +1,14 @@
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">¡Inscripción Exitosa!</h4>
+        <p>Gracias <strong>{{ inscripcion.nombre_completo }}</strong> por sumarte al taller de <strong>{{ inscripcion.taller }}</strong>.</p>
+        <hr>
+        <p class="mb-0">Hemos enviado un correo electrónico a <strong>{{ inscripcion.email }}</strong> con los detalles.</p>
+        <h3 class="mt-4 text-dark">Tu número de cupón es: <span class="badge bg-primary">{{ inscripcion.cupon }}</span></h3>
+    </div>
+    <a href="{% url 'clientes:index' %}" class="btn btn-primary mt-3">Volver al Inicio</a>
+</div>
+{% endblock %}

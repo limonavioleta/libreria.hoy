@@ -1,0 +1,22 @@
+<!-- templates/clientes/eliminar_lector.html -->
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 500px;">
+    <div class="card border-danger mt-5" style="background-color: var(--bg-tarjeta);">
+        <div class="card-header bg-danger text-white">
+            <h4 class="m-0">Confirmar Eliminación</h4>
+        </div>
+        <div class="card-body">
+            <p>¿Estás seguro/a de que querés eliminar al lector <strong>{{ lector.nombre_completo }}</strong>?</p>
+            <p class="text-muted small">Esta acción no se puede deshacer.</p>
+
+            <form method="POST" class="d-flex justify-content-between mt-4">
+                {% csrf_token %} <!--[cite: 23] -->
+                <a href="{% url 'listar_lectores' %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

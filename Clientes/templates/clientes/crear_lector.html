@@ -1,0 +1,41 @@
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<main class="container py-4" style="max-width: 520px;">
+    <div class="p-4" style="background-color: var(--bg-tarjeta); border: 2px solid var(--color-amarillo); border-radius: 8px;">
+        <h1 style="color: var(--color-amarillo); font-size: 1.8rem; margin-bottom: 10px;">Registro de Nuevo Suscriptor</h1>
+        <p style="color: var(--texto-gris); font-size: 0.95rem; margin-bottom: 25px;">
+            Únete a nuestra comunidad para acceder al catálogo, reservar libros y colaborar con los comedores de Merlo.
+        </p>
+
+        <form action="" method="POST">
+            {% csrf_token %} <!-- Medida de seguridad obligatoria de Django[cite: 23] -->
+
+            <div class="mb-3">
+                <label for="{{ form.nombre_y_apellido.id_for_label }}" class="form-label fw-bold" style="color: white;">
+                    {{ form.nombre_y_apellido.label }}
+                </label>
+                {{ form.nombre_y_apellido }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.email.id_for_label }}" class="form-label fw-bold" style="color: white;">
+                    {{ form.email.label }}
+                </label>
+                {{ form.email }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.telefono.id_for_label }}" class="form-label fw-bold" style="color: white;">
+                    {{ form.telefono.label }}
+                </label>
+                {{ form.telefono }}
+            </div>
+
+            <button type="submit" class="btn w-100 fw-bold mt-3" style="background-color: var(--color-amarillo); color: black; padding: 10px;" aria-label="Completar registro y crear cuenta">
+                Registrarme
+            </button>
+        </form>
+    </div>
+</main>
+{% endblock %}
